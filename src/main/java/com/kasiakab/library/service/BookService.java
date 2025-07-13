@@ -61,4 +61,10 @@ public class BookService {
 
     }
 
+    public BookDTO getBookById(Long id) {
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Book not found with id: " + id));
+        return BookDTO.fromEntity(book);
+    }
+
 }
