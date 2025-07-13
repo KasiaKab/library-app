@@ -19,3 +19,6 @@ Content-Type: application/json
   "categoryId": 1,
   "availableCopies": 5
 }
+
+### Usuń książkę
+DELETE http://localhost:8080/books/1
