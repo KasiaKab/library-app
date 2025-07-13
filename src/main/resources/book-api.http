@@ -8,3 +8,14 @@ Content-Type: application/json
   "categoryId": 1,
   "availableCopies": 3
 }
+
+### Edytuj książkę
+PUT http://localhost:8080/books/1
+Content-Type: application/json
+
+{
+  "title": "Inferno - Wydanie poprawione",
+  "authorId": 1,
+  "categoryId": 1,
+  "availableCopies": 5
+}

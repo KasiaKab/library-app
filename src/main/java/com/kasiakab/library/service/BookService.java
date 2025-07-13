@@ -67,4 +67,24 @@ public class BookService {
         return BookDTO.fromEntity(book);
     }
 
+    public BookDTO updateBook(Long id, BookRequestDTO dto) {
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Book not found with id: " + id));
+
+        book.setTitle(dto.getTitle());
+        book.setAvailableCopies(dto.getAvailableCopies());
+
+        Author author = authorRepository.findById(dto.getAuthorId())
+                .orElseThrow(() -> new RuntimeException("Author not found with id: " + dto.getAuthorId()));
+        book.setAuthor(author);
+
+        Category category = categoryRepository.findById(dto.getCategoryId())
+                .orElseThrow(() -> new RuntimeException("Category not found with id: " + dto.getCategoryId()));
+        book.setCategory(category);
+
+        bookRepository.save(book);
+        return BookDTO.fromEntity(book);
+
+    }
+
 }
