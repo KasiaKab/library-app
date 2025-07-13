@@ -1,20 +1,30 @@
 package com.kasiakab.library.service;
 
 import com.kasiakab.library.dto.BookDTO;
+import com.kasiakab.library.dto.BookRequestDTO;
+import com.kasiakab.library.model.Author;
 import com.kasiakab.library.model.Book;
+import com.kasiakab.library.model.Category;
+import com.kasiakab.library.repository.AuthorRepository;
 import com.kasiakab.library.repository.BookRepository;
+import com.kasiakab.library.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class BookService {
 
     private final BookRepository bookRepository;
+    private final AuthorRepository authorRepository;
+    private final CategoryRepository categoryRepository;
 
-    public BookService(BookRepository bookRepository) {
+    public BookService(BookRepository bookRepository, AuthorRepository authorRepository, CategoryRepository categoryRepository) {
         this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     public List<BookDTO> getAllBooks() {
@@ -28,6 +38,27 @@ public class BookService {
                         book.getAvailableCopies()
                 ))
                 .collect(Collectors.toList());
+    }
+
+    public Book addBook(BookRequestDTO dto) {
+        Optional<Author> authorOpt = authorRepository.findById(dto.getAuthorId());
+        if (authorOpt.isEmpty()) {
+            throw new RuntimeException("Author not found with id: " + dto.getAuthorId());
+        }
+
+        Optional<Category> categoryOpt = categoryRepository.findById(dto.getCategoryId());
+        if (categoryOpt.isEmpty()) {
+            throw new RuntimeException("Category not found with id: " + dto.getCategoryId());
+        }
+
+        Book book = new Book();
+        book.setTitle(dto.getTitle());
+        book.setAuthor(authorOpt.get());
+        book.setCategory(categoryOpt.get());
+        book.setAvailableCopies(dto.getAvailableCopies());
+
+        return bookRepository.save(book);
+
     }
 
 }
