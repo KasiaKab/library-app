@@ -1,0 +1,10 @@
+### Dodaj nową książkę
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "title": "Kod Leonarda da Vinci",
+  "authorId": 1,
+  "categoryId": 1,
+  "availableCopies": 3
+}
