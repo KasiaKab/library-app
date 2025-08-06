@@ -30,7 +30,7 @@ public class AuthorService {
 
     }
 
-    public Author updateAuthor(Long id, Author updatedAuthor) {
+    public Author updateAuthor(Long id, AuthorDTO updatedAuthor) {
         return authorRepository.findById(id)
                 .map(authorFromDB -> {
                     authorFromDB.setFirstName(updatedAuthor.getFirstName());
