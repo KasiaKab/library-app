@@ -29,4 +29,21 @@ public class AuthorService {
                 .collect(Collectors.toList());
 
     }
+
+    public Author updateAuthor(Long id, Author updatedAuthor) {
+        return authorRepository.findById(id)
+                .map(authorFromDB -> {
+                    authorFromDB.setFirstName(updatedAuthor.getFirstName());
+                    authorFromDB.setLastName(updatedAuthor.getLastName());
+                    return authorRepository.save(authorFromDB);
+                })
+                .orElseThrow(() -> new RuntimeException("Author not found with id: " + id));
+    }
+
+    public void deleteAuthor(Long id) {
+        if (!authorRepository.existsById(id)) {
+            throw new RuntimeException("Author with id " + id + " not found");
+        }
+        authorRepository.deleteById(id);
+    }
 }

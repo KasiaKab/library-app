@@ -22,3 +22,14 @@ Content-Type: application/json
 
 ### Usuń książkę
 DELETE http://localhost:8080/books/1
+
+### Pobierz wszystkie kategorie
+GET http://localhost:8080/categories
+
+### Dodaj nową kategorię
+POST http://localhost:8080/categories
+Content-Type: application/json
+
+{
+  "name": "History"
+}
