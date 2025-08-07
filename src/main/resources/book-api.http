@@ -50,10 +50,17 @@ Content-Type: application/json
   "name": "Updated Adventure"
 }
 
-### Sprawdź nieistniejącą kategorie
+### Walidacja - brak kategorii
 PUT http://localhost:8080/categories/9999
 Content-Type: application/json
 
 {
   "name": "Invalid Update"
+}
+### Walidacja - brak nazwy kategorii
+POST http://localhost:8080/categories
+Content-Type: application/json
+
+{
+  "name": ""
 }
