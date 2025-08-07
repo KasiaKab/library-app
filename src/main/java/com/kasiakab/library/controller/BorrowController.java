@@ -2,6 +2,7 @@ package com.kasiakab.library.controller;
 
 import com.kasiakab.library.dto.BorrowDTO;
 import com.kasiakab.library.service.BorrowService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class BorrowController {
     }
 
     @PostMapping
-    public ResponseEntity<BorrowDTO> createBorrow(@RequestBody BorrowDTO borrowDTO) {
+    public ResponseEntity<BorrowDTO> createBorrow(@Valid @RequestBody BorrowDTO borrowDTO) {
         return ResponseEntity.ok(borrowService.createBorrow(borrowDTO));
     }
 }
