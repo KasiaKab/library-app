@@ -1,5 +1,14 @@
 spring:
+  #datasource:
+  #url: jdbc:h2:mem:test #;DATABASE_TO_UPPER=false
+
   datasource:
-    url: jdbc:h2:mem:test #;DATABASE_TO_UPPER=false
+    url: jdbc:mysql://localhost:3306/library
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
+    hibernate:
+      ddl-auto: update
     show-sql: true
