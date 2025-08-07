@@ -1,6 +1,5 @@
 package com.kasiakab.library.dto;
 
-import com.kasiakab.library.model.Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,5 +11,5 @@ public class UserDTO {
     private String name;
     private String email;
     private String password;
-    private Role role;
+
 }

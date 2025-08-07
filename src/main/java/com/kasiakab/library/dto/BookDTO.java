@@ -11,12 +11,18 @@ public class BookDTO {
     private String title;
     private String authorFullName;
     private int availableCopies;
+    private int publicationYear;
 
-    public BookDTO(Long id, String title, String authorFullName, int availableCopies) {
+    public BookDTO(Long id, String title, String authorFullName, int availableCopies, int publicationYear) {
         this.id = id;
         this.title = title;
         this.authorFullName = authorFullName;
         this.availableCopies = availableCopies;
+        this.publicationYear = publicationYear;
+    }
+
+    public BookDTO() {
+
     }
 
     public static BookDTO fromEntity(Book book) {
@@ -29,7 +35,8 @@ public class BookDTO {
                 book.getId(),
                 book.getTitle(),
                 authorFullName,
-                book.getAvailableCopies()
+                book.getAvailableCopies(),
+                book.getPublicationYear()
         );
 
     }

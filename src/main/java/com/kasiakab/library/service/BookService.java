@@ -36,7 +36,8 @@ public class BookService {
                         book.getId(),
                         book.getTitle(),
                         book.getAuthor().getFirstName() + " " + book.getAuthor().getLastName(),
-                        book.getAvailableCopies()
+                        book.getAvailableCopies(),
+                        book.getPublicationYear()
                 ))
                 .collect(Collectors.toList());
     }
@@ -95,5 +96,19 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
+    public List<BookDTO> getAvailableBooks() {
+        return bookRepository.findAvailableCopies().stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+    }
 
+    private BookDTO mapToDTO(Book book) {
+        BookDTO dto = new BookDTO();
+        dto.setId(book.getId());
+        dto.setTitle(book.getTitle());
+        dto.setPublicationYear(book.getPublicationYear());
+        dto.setAvailableCopies(book.getAvailableCopies());
+        return dto;
+
+    }
 }
