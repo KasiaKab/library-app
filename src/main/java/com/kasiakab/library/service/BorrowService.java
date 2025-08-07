@@ -1,6 +1,7 @@
 package com.kasiakab.library.service;
 
 import com.kasiakab.library.dto.BorrowDTO;
+import com.kasiakab.library.exception.NotFoundException;
 import com.kasiakab.library.model.Book;
 import com.kasiakab.library.model.Borrow;
 import com.kasiakab.library.model.User;
@@ -28,9 +29,9 @@ public class BorrowService {
 
     public BorrowDTO createBorrow(BorrowDTO dto) {
         Book book = bookRepository.findById(dto.getBookId())
-                .orElseThrow(() -> new RuntimeException("Book not found"));
+                .orElseThrow(() -> new NotFoundException("Book not found"));
         User user = userRepository.findById(dto.getUserId())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new NotFoundException("User not found"));
 
         if (book.getAvailableCopies() <= 0) {
             throw new RuntimeException("No available copies");

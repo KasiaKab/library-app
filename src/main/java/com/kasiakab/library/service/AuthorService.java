@@ -1,6 +1,7 @@
 package com.kasiakab.library.service;
 
 import com.kasiakab.library.dto.AuthorDTO;
+import com.kasiakab.library.exception.NotFoundException;
 import com.kasiakab.library.model.Author;
 import com.kasiakab.library.repository.AuthorRepository;
 import org.springframework.stereotype.Service;
@@ -37,12 +38,12 @@ public class AuthorService {
                     authorFromDB.setLastName(updatedAuthor.getLastName());
                     return authorRepository.save(authorFromDB);
                 })
-                .orElseThrow(() -> new RuntimeException("Author not found with id: " + id));
+                .orElseThrow(() -> new NotFoundException("Author not found with id: " + id));
     }
 
     public void deleteAuthor(Long id) {
         if (!authorRepository.existsById(id)) {
-            throw new RuntimeException("Author with id " + id + " not found");
+            throw new NotFoundException("Author with id " + id + " not found");
         }
         authorRepository.deleteById(id);
     }
