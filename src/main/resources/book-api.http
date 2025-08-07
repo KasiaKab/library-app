@@ -49,3 +49,11 @@ Content-Type: application/json
 {
   "name": "Updated Adventure"
 }
+
+### Sprawdź nieistniejącą kategorie
+PUT http://localhost:8080/categories/9999
+Content-Type: application/json
+
+{
+  "name": "Invalid Update"
+}
