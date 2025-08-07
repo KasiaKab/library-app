@@ -64,4 +64,10 @@ public class BorrowService {
                 .collect(Collectors.toList());
     }
 
+    public List<BorrowDTO> getOverdueBorrows() {
+        return borrowRepository.findOverdueBorrows().stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+    }
+
 }

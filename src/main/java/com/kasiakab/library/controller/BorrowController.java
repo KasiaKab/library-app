@@ -27,4 +27,9 @@ public class BorrowController {
     public ResponseEntity<BorrowDTO> createBorrow(@Valid @RequestBody BorrowDTO borrowDTO) {
         return ResponseEntity.ok(borrowService.createBorrow(borrowDTO));
     }
+
+    @GetMapping("/overdue")
+    public List<BorrowDTO> getOverdueBorrows() {
+        return borrowService.getOverdueBorrows();
+    }
 }
