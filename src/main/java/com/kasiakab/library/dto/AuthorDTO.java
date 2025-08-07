@@ -1,5 +1,6 @@
 package com.kasiakab.library.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,7 +8,11 @@ import lombok.Setter;
 @Setter
 public class AuthorDTO {
     private Long id;
+
+    @NotBlank(message = "First name is required")
     private String firstName;
+
+    @NotBlank(message = "Last name is required")
     private String lastName;
 
     public AuthorDTO(Long id, String firstName, String lastName) {
