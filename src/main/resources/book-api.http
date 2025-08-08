@@ -52,7 +52,7 @@ Content-Type: application/json
 
 ### Walidacja - brak kategorii
 PUT http://localhost:8080/categories/9999
-Content-Type: application/json
+Content-Type: application/jsonControllerAdvice
 
 {
   "name": "Invalid Update"
