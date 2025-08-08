@@ -25,6 +25,12 @@ public class CategoryController {
         return categoryService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Category> getCategory(@PathVariable Long id) {
+        Category category = categoryService.findById(id);
+        return ResponseEntity.ok(category);
+    }
+
     @PostMapping
     public ResponseEntity<Category> createCategory(@RequestBody @Valid CategoryDTO dto) {
         Category saved = categoryService.save(dto);

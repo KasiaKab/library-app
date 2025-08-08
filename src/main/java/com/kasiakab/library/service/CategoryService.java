@@ -38,4 +38,8 @@ public class CategoryService {
                 .orElseThrow(() -> new NotFoundException("Category with id " + id + " not found"));
     }
 
+    public Category findById(Long id) {
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Category " + id + " not found"));
+    }
 }
