@@ -42,7 +42,7 @@ public class BorrowService {
         borrow.setBook(book);
         borrow.setUser(user);
         borrow.setBorrowDate(LocalDate.now());
-        borrow.setBorrowDate(LocalDate.now().plusDays(14));
+        borrow.setReturnDate(LocalDate.now().plusDays(14));
 
         Borrow saved = borrowRepository.save(borrow);
         return mapToDTO(saved);

@@ -45,12 +45,12 @@ public class BookService {
     public Book addBook(BookRequestDTO dto) {
         Optional<Author> authorOpt = authorRepository.findById(dto.getAuthorId());
         if (authorOpt.isEmpty()) {
-            throw new RuntimeException("Author not found with id: " + dto.getAuthorId());
+            throw new NotFoundException("Author not found with id: " + dto.getAuthorId());
         }
 
         Optional<Category> categoryOpt = categoryRepository.findById(dto.getCategoryId());
         if (categoryOpt.isEmpty()) {
-            throw new RuntimeException("Category not found with id: " + dto.getCategoryId());
+            throw new NotFoundException("Category not found with id: " + dto.getCategoryId());
         }
 
         Book book = new Book();
@@ -91,7 +91,7 @@ public class BookService {
 
     public void deleteBook(Long id) {
         if (!bookRepository.existsById(id)) {
-            throw new RuntimeException("Book not found with id: " + id);
+            throw new NotFoundException("Book not found with id: " + id);
         }
         bookRepository.deleteById(id);
     }
