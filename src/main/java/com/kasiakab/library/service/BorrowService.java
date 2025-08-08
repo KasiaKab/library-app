@@ -66,6 +66,7 @@ public class BorrowService {
                 .collect(Collectors.toList());
     }
 
+    /*Niestandartowe JPQL do pobrania findOverdueBorrows*/
     public List<BorrowDTO> getOverdueBorrows() {
         return borrowRepository.findOverdueBorrows().stream()
                 .map(this::mapToDTO)
