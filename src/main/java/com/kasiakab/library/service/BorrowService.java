@@ -9,6 +9,7 @@ import com.kasiakab.library.repository.BookRepository;
 import com.kasiakab.library.repository.BorrowRepository;
 import com.kasiakab.library.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -27,6 +28,7 @@ public class BorrowService {
         this.userRepository = userRepository;
     }
 
+    @Transactional
     public BorrowDTO createBorrow(BorrowDTO dto) {
         Book book = bookRepository.findById(dto.getBookId())
                 .orElseThrow(() -> new NotFoundException("Book not found"));
@@ -34,7 +36,7 @@ public class BorrowService {
                 .orElseThrow(() -> new NotFoundException("User not found"));
 
         if (book.getAvailableCopies() <= 0) {
-            throw new RuntimeException("No available copies");
+            throw new IllegalArgumentException("No available copies");
         }
 
         book.setAvailableCopies(book.getAvailableCopies() - 1);
