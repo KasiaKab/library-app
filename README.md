@@ -42,3 +42,7 @@ Celem aplikacji było:
 - POST `/api/borrow` – wypożyczenie książki
 - DELETE `/api/books/{id}` – usunięcie książki
 
+## Diagram bazy danych
+
+![Diagram bazy danych](database-diagram.png)
+
