@@ -22,7 +22,6 @@ public class BookDTO {
     }
 
     public BookDTO() {
-
     }
 
     public static BookDTO fromEntity(Book book) {
