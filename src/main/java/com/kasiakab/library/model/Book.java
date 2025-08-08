@@ -26,6 +26,6 @@ public class Book {
     private Category category;
 
     @OneToMany(mappedBy = "book")
-    private List<Borrow> books;
+    private List<Borrow> borrows;
 
 }
