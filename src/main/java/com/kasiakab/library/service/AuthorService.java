@@ -41,6 +41,9 @@ public class AuthorService {
                 .orElseThrow(() -> new NotFoundException("Author not found with id: " + id));
     }
 
+/* Część CRUD, ale brak endpointu w AuthorController;
+dodać obsługę w przyszłości
+*/
     public void deleteAuthor(Long id) {
         if (!authorRepository.existsById(id)) {
             throw new NotFoundException("Author with id " + id + " not found");
