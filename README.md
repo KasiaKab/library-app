@@ -32,7 +32,7 @@ Celem aplikacji było:
 - REST API
 - DTO
 - Walidacja danych (`@NotBlank`, `@NotNull`, `@Min`)
-- Testowanie przez Pplik .http
+- Testowanie przez plik .http
 
 ## Przykładowe endpointy
 
