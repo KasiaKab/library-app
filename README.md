@@ -32,15 +32,15 @@ Celem aplikacji było:
 - REST API
 - DTO
 - Walidacja danych (`@NotBlank`, `@NotNull`, `@Min`)
-- Testowanie przez Pplik .http
+- Testowanie przez plik .http
 
 ## Przykładowe endpointy
 
-- GET `/api/books` – pobranie listy książek
-- POST `/api/books` – dodanie książki
-- GET `/api/books/available` – lista dostępnych książek
-- POST `/api/borrow` – wypożyczenie książki
-- DELETE `/api/books/{id}` – usunięcie książki
+- GET `/books` – pobranie listy książek
+- POST `/books` – dodanie książki
+- GET `/books/available` – lista dostępnych książek
+- POST `/borrow` – wypożyczenie książki
+- DELETE `/books/{id}` – usunięcie książki
 
 ## Diagram bazy danych
 
