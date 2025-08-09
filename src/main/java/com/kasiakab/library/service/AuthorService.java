@@ -42,7 +42,7 @@ public class AuthorService {
     }
 
 /* Część CRUD, ale brak endpointu w AuthorController;
-dodać obsługę w przyszłości
+można dodać obsługę w przyszłości
 */
     public void deleteAuthor(Long id) {
         if (!authorRepository.existsById(id)) {
