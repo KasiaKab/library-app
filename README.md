@@ -29,6 +29,7 @@ Celem aplikacji było:
 - MySQL (H2)
 - Maven
 - Lombok
+- Tomcat
 - REST API
 - DTO
 - Walidacja danych (`@NotBlank`, `@NotNull`, `@Min`)
