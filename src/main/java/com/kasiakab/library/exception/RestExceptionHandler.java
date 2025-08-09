@@ -32,6 +32,8 @@ public class RestExceptionHandler {
         body.put("status", 400);
         body.put("error", "Validation failed");
 
+        /*  klucz: nazwa pola,
+            wartość: komunikat błędu*/
         Map<String, String> errors = new HashMap<>();
         for (FieldError fieldError : ex.getBindingResult().getFieldErrors()) {
             errors.put(fieldError.getField(), fieldError.getDefaultMessage());
@@ -46,8 +48,9 @@ public class RestExceptionHandler {
     public ResponseEntity<Object> handleIllegalState(IllegalStateException ex) {
         Map<String, Object> body = new HashMap<>();
         body.put("timestamp", LocalDateTime.now());
-        body.put("status", HttpStatus.BAD_REQUEST.value());
-        body.put("error", ex.getMessage());
+        body.put("status", 400);
+        body.put("error", "Invalid operation");
+        body.put("message", ex.getMessage());
 
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
